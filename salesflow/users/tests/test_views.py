@@ -12,11 +12,7 @@ from django.utils.translation import gettext_lazy as _
 from salesflow.users.forms import UserAdminChangeForm
 from salesflow.users.models import User
 from salesflow.users.tests.factories import UserFactory
-from salesflow.users.views import (
-    UserRedirectView,
-    UserUpdateView,
-    user_detail_view,
-)
+from salesflow.users.views import UserRedirectView, UserUpdateView, user_detail_view
 
 pytestmark = pytest.mark.django_db
 
