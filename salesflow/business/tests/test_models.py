@@ -3,8 +3,8 @@ from django.test import TestCase
 
 from salesflow.business.models import Business
 
-
 User = get_user_model()
+
 
 class BusinessModelTestCase(TestCase):
     field_name = [
@@ -32,7 +32,7 @@ class BusinessModelTestCase(TestCase):
 
     def validate_model_data(self, business_model, business_data):
         for field in self.field_name:
-            self.assertEquals(getattr(business_model, field), business_data[field])
+            self.assertEqual(getattr(business_model, field), business_data[field])
 
     def test_created_business(self):
         expected_data = {
@@ -52,13 +52,13 @@ class BusinessModelTestCase(TestCase):
     def test_update_business(self):
         Business.objects.filter(id=self.business.pk).update(name="Business Updated")
         business = Business.objects.get(id=self.business.pk)
-        self.assertEquals(business.name, "Business Updated")
+        self.assertEqual(business.name, "Business Updated")
 
     def test_fetch_business(self):
         business = Business.objects.get(id=self.business.pk)
-        self.assertEquals(business, self.business)
+        self.assertEqual(business, self.business)
 
     def test_delete_business(self):
         Business.objects.get(id=self.business.pk).delete()
         business = Business.objects.filter(id=self.business.pk)
-        self.assertEquals(len(business), 0)
+        self.assertEqual(len(business), 0)
